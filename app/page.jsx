@@ -657,7 +657,7 @@ export default function Page() {
         await face.load();
         document.fonts.add(face);
       } catch {
-        setFontMsg('Could not load that file — the host may block cross-origin use (no CORS header).');
+        setFontMsg('Could not load that file. The host may block cross-origin use (no CORS header).');
         return;
       }
       pickFonts([src.name]);
@@ -666,11 +666,11 @@ export default function Page() {
 
     const got = await loadStylesheet(src.url, src.name);
     if (src.mode === 'google' && !got.includes(src.name)) {
-      setFontMsg('No Google Font called “' + src.name + '” — check the exact spelling.');
+      setFontMsg('No Google Font called “' + src.name + '”. Check the exact spelling.');
       return;
     }
     if (!got.length) {
-      setFontMsg('That stylesheet added no usable font — check the URL and its CORS headers.');
+      setFontMsg('That stylesheet added no usable font. Check the URL and its CORS headers.');
       return;
     }
     pickFonts(got);
